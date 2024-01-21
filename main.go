@@ -11,5 +11,8 @@ func init() {
 }
 
 func main() {
+	msg, section := email.GetMessage(email.Client)
+	email.GetMessageBody(msg, section)
 
+	defer email.Client.Logout()
 }

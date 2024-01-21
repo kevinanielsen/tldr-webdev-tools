@@ -19,8 +19,6 @@ func ConnectToImap() {
 	}
 	log.Println("Connected!")
 
-	defer c.Logout()
-
 	// Login
 	if err := c.Login(initializers.GMAIL_USERNAME, initializers.GMAIL_APP_PASSWORD); err != nil {
 		log.Fatal(err)
@@ -28,5 +26,4 @@ func ConnectToImap() {
 	log.Println("Logged in!")
 
 	Client = c
-
 }
