@@ -8,6 +8,7 @@ import (
 )
 
 var GMAIL_APP_PASSWORD string
+var GMAIL_USERNAME string
 
 func LoadEnvironmentVariables() {
 	err := godotenv.Load()
@@ -16,6 +17,7 @@ func LoadEnvironmentVariables() {
 	}
 
 	GMAIL_APP_PASSWORD = os.Getenv("GMAIL_APP_PASSWORD")
+	GMAIL_USERNAME = os.Getenv("GMAIL_USERNAME")
 
 	log.Println("Successfully loaded environment variables")
 }

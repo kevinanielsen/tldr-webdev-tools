@@ -22,7 +22,7 @@ func ConnectToImap() {
 	defer c.Logout()
 
 	// Login
-	if err := c.Login("keveran@gmail.com", initializers.GMAIL_APP_PASSWORD); err != nil {
+	if err := c.Login(initializers.GMAIL_USERNAME, initializers.GMAIL_APP_PASSWORD); err != nil {
 		log.Fatal(err)
 	}
 	log.Println("Logged in!")
