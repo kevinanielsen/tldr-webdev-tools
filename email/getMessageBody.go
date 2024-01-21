@@ -9,6 +9,9 @@ import (
 )
 
 func GetMessageBody(msg *imap.Message, section imap.BodySectionName) {
+	log.Println("Getting message body...")
+
+	// Get the whole message body
 	r := msg.GetBody(&section)
 	if r == nil {
 		log.Fatal("Server didn't returned message body")
@@ -24,12 +27,6 @@ func GetMessageBody(msg *imap.Message, section imap.BodySectionName) {
 	header := mr.Header
 	if date, err := header.Date(); err == nil {
 		log.Println("Date:", date)
-	}
-	if from, err := header.AddressList("From"); err == nil {
-		log.Println("From:", from)
-	}
-	if to, err := header.AddressList("To"); err == nil {
-		log.Println("To:", to)
 	}
 	if subject, err := header.Subject(); err == nil {
 		log.Println("Subject:", subject)

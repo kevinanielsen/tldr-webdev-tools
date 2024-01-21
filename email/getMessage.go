@@ -8,6 +8,7 @@ import (
 )
 
 func GetMessage(c *client.Client) (*imap.Message, imap.BodySectionName) {
+	log.Println("Getting message...")
 	// Select INBOX
 	mbox, err := c.Select("TLDR", false)
 	if err != nil {
