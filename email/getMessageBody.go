@@ -1,14 +1,13 @@
 package email
 
 import (
-	"io"
 	"log"
 
 	"github.com/emersion/go-imap"
 	"github.com/emersion/go-message/mail"
 )
 
-func GetMessageBody(msg *imap.Message, section imap.BodySectionName) {
+func GetMessageBody(msg *imap.Message, section imap.BodySectionName) *mail.Part {
 	log.Println("Getting message body...")
 
 	// Get the whole message body
@@ -32,24 +31,13 @@ func GetMessageBody(msg *imap.Message, section imap.BodySectionName) {
 		log.Println("Subject:", subject)
 	}
 
-	// Process each message's part
-	for {
-		p, err := mr.NextPart()
-		if err == io.EOF {
-			break
-		} else if err != nil {
-			log.Fatal(err)
-		}
+	// Get HTML part of body
+	mr.NextPart()
+	p, err := mr.NextPart()
 
-		switch h := p.Header.(type) {
-		case *mail.InlineHeader:
-			// This is the message's text (can be plain-text or HTML)
-			b, _ := io.ReadAll(p.Body)
-			log.Printf("Got text: %v", string(b))
-		case *mail.AttachmentHeader:
-			// This is an attachment
-			filename, _ := h.Filename()
-			log.Printf("Got attachment: %v", filename)
-		}
+	if err != nil {
+		log.Fatal(err)
 	}
+
+	return p
 }

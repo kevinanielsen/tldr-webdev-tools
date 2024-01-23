@@ -1,7 +1,10 @@
 package main
 
 import (
+	"log"
+
 	"github.com/kevinanielsen/tldr-webdev-tools/email"
+	"github.com/kevinanielsen/tldr-webdev-tools/email/utils"
 	"github.com/kevinanielsen/tldr-webdev-tools/initializers"
 )
 
@@ -12,7 +15,10 @@ func init() {
 
 func main() {
 	msg, section := email.GetMessage(email.Client)
-	email.GetMessageBody(msg, section)
+	htmlPart := email.GetMessageBody(msg, section)
+	toolsSection := utils.FindSection(htmlPart)
+
+	log.Println(toolsSection)
 
 	defer email.Client.Logout()
 }
