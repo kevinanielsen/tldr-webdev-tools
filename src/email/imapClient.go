@@ -4,7 +4,7 @@ import (
 	"log"
 
 	"github.com/emersion/go-imap/client"
-	"github.com/kevinanielsen/tldr-webdev-tools/initializers"
+	"github.com/kevinanielsen/tldr-webdev-tools/src/initializers"
 )
 
 var Client *client.Client
