@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	"github.com/kevinanielsen/tldr-webdev-tools/src/database"
 	"github.com/kevinanielsen/tldr-webdev-tools/src/email"
 	"github.com/kevinanielsen/tldr-webdev-tools/src/email/utils"
 	"github.com/kevinanielsen/tldr-webdev-tools/src/initializers"
@@ -10,6 +11,7 @@ import (
 
 func init() {
 	initializers.LoadEnvironmentVariables()
+	database.ConnectToDatabase()
 	email.ConnectToImap()
 }
 

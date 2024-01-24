@@ -11,6 +11,7 @@ var GMAIL_APP_PASSWORD string
 var GMAIL_USERNAME string
 
 func LoadEnvironmentVariables() {
+	log.Println("Loading environment variables...")
 	err := godotenv.Load()
 	if err != nil {
 		log.Fatalf("Failed to load .env file: %v", err)
@@ -24,6 +25,4 @@ func LoadEnvironmentVariables() {
 	if GMAIL_USERNAME == "" {
 		log.Fatal("GMAIL_USERNAME environment variable not set")
 	}
-
-	log.Println("Successfully loaded environment variables")
 }

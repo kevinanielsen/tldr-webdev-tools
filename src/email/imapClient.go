@@ -17,13 +17,12 @@ func ConnectToImap() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Println("Connected!")
 
 	// Login
+	log.Println("Logging in...")
 	if err := c.Login(initializers.GMAIL_USERNAME, initializers.GMAIL_APP_PASSWORD); err != nil {
 		log.Fatal(err)
 	}
-	log.Println("Logged in!")
 
 	Client = c
 }
