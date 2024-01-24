@@ -24,6 +24,9 @@ func getToolsStr(str string) string {
 	return strings.Split(launchesToEnd, "Miscellaneous")[0]
 }
 
+// FindSection parses the provided email part to extract the "Launches & Tools"
+// section. It converts the HTML to plain text, splits on "Launches & Tools",
+// and returns Tool structs for each tool link and description.
 func FindSection(p *mail.Part) []Tool {
 	b, _ := io.ReadAll(p.Body)
 	emailBody := string(b)
